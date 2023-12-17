@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .medication {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medication Manager</h1>
+    <form id="medication-form">
+        <input type="text" id="medication-name" placeholder="Medication Name" required>
+        <input type="number" id="medication-dosage" placeholder="Dosage" required>
+        <input type="text" id="medication-frequency" placeholder="Frequency" required>
+        <button type="submit">Add Medication</button>
+    </form>
+    <div id="medication-list"></div>
+
+    <script>
+        document.getElementById('medication-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('medication-name').value;
+            var dosage = document.getElementById('medication-dosage').value;
+            var frequency = document.getElementById('medication-frequency').value;
+            var medicationList = document.getElementById('medication-list');
+            var div = document.createElement('div');
+            div.className = 'medication';
+            div.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
+            medicationList.appendChild(div);
+            document.getElementById('medication-form').reset();
+        });
+    </script>
+</body>
+</html>
