@@ -22,6 +22,9 @@
     <div id="medication-list"></div>
 
     <script>
+        /**
+         * Initializes the Medication Manager form and handles form submission.
+         */
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('medication-form');
             const nameInput = document.getElementById('medication-name');
@@ -29,6 +32,10 @@
             const frequencyInput = document.getElementById('medication-frequency');
             const medicationList = document.getElementById('medication-list');
 
+            /**
+             * Handles the form submission event.
+             * @param {Event} e - The form submission event.
+             */
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const name = nameInput.value;
