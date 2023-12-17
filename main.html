@@ -111,7 +111,13 @@
             });
 
             function reminder(name, dosage, frequency) {
-                console.log(`Don't forget to take ${dosage} of ${name} ${frequency}.`);
+                const currentDate = new Date();
+                const nextReminderDate = new Date(currentDate.getTime() + (frequency * 24 * 60 * 60 * 1000));
+                const formattedNextReminderDate = nextReminderDate.toLocaleDateString();
+                const formattedNextReminderTime = nextReminderDate.toLocaleTimeString();
+
+                console.log(`Don't forget to take ${dosage} of ${name} ${frequency} times a day.`);
+                console.log(`Next reminder: ${formattedNextReminderDate} at ${formattedNextReminderTime}`);
             }
 
             function showError(elementId, errorMessage) {
