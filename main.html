@@ -1,4 +1,3 @@
-<!-- FILEPATH: /home/magical/Documents/Pro/Med center/MedicationCenter/main.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,9 +96,6 @@
     </div>
 
     <script>
-        /**
-         * Initializes the Medication Manager form and handles form submission.
-         */
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('medication-form');
             const nameInput = document.getElementById('medication-name');
@@ -107,10 +103,6 @@
             const frequencyInput = document.getElementById('medication-frequency');
             const medicationList = document.getElementById('medication-list');
 
-            /**
-             * Handles the form submission event.
-             * @param {Event} e - The form submission event.
-             */
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const name = nameInput.value;
@@ -120,44 +112,24 @@
                 const medicationDiv = document.createElement('div');
                 medicationDiv.className = 'medication';
                 
-                const medicationName = document.createElement('h3');
-                medicationName.textContent = name;
-                medicationDiv.appendChild(medicationName);
+                medicationDiv.innerHTML = `
+                    <h3>${name}</h3>
+                    <label>Dosage: <span>${dosage}</span></label>
+                    <label>Frequency: <span>${frequency}</span></label>
+                    <button>Delete</button>
+                `;
                 
-                const dosageLabel = document.createElement('label');
-                dosageLabel.textContent = 'Dosage: ';
-                const dosageValue = document.createElement('span');
-                dosageValue.textContent = dosage;
-                dosageLabel.appendChild(dosageValue);
-                medicationDiv.appendChild(dosageLabel);
-                
-                const frequencyLabel = document.createElement('label');
-                frequencyLabel.textContent = 'Frequency: ';
-                const frequencyValue = document.createElement('span');
-                frequencyValue.textContent = frequency;
-                frequencyLabel.appendChild(frequencyValue);
-                medicationDiv.appendChild(frequencyLabel);
-
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
+                const deleteButton = medicationDiv.querySelector('button');
                 deleteButton.addEventListener('click', function() {
                     medicationDiv.remove();
                 });
-                medicationDiv.appendChild(deleteButton);
 
                 medicationList.appendChild(medicationDiv);
                 form.reset();
 
-                // Call the reminder function
                 reminder(name, dosage, frequency);
             });
 
-            /**
-             * Displays a reminder for the added medication.
-             * @param {string} name - The name of the medication.
-             * @param {string} dosage - The dosage of the medication.
-             * @param {string} frequency - The frequency of the medication.
-             */
             function reminder(name, dosage, frequency) {
                 console.log(`Don't forget to take ${dosage} of ${name} ${frequency}.`);
             }
