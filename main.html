@@ -44,7 +44,31 @@
 
                 const medicationDiv = document.createElement('div');
                 medicationDiv.className = 'medication';
-                medicationDiv.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
+                
+                const medicationName = document.createElement('h3');
+                medicationName.textContent = name;
+                medicationDiv.appendChild(medicationName);
+                
+                const dosageLabel = document.createElement('label');
+                dosageLabel.textContent = 'Dosage: ';
+                const dosageValue = document.createElement('span');
+                dosageValue.textContent = dosage;
+                dosageLabel.appendChild(dosageValue);
+                medicationDiv.appendChild(dosageLabel);
+                
+                const frequencyLabel = document.createElement('label');
+                frequencyLabel.textContent = 'Frequency: ';
+                const frequencyValue = document.createElement('span');
+                frequencyValue.textContent = frequency;
+                frequencyLabel.appendChild(frequencyValue);
+                medicationDiv.appendChild(frequencyLabel);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', function() {
+                    medicationDiv.remove();
+                });
+                medicationDiv.appendChild(deleteButton);
 
                 medicationList.appendChild(medicationDiv);
                 form.reset();
