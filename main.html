@@ -147,7 +147,20 @@
 
                 medicationList.appendChild(medicationDiv);
                 form.reset();
+
+                // Call the reminder function
+                reminder(name, dosage, frequency);
             });
+
+            /**
+             * Displays a reminder for the added medication.
+             * @param {string} name - The name of the medication.
+             * @param {string} dosage - The dosage of the medication.
+             * @param {string} frequency - The frequency of the medication.
+             */
+            function reminder(name, dosage, frequency) {
+                console.log(`Don't forget to take ${dosage} of ${name} ${frequency}.`);
+            }
         });
     </script>
 </body>
