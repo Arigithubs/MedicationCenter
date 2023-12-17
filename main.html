@@ -1,3 +1,4 @@
+<!-- FILEPATH: /home/magical/Documents/Pro/Med center/MedicationCenter/main.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,24 +22,26 @@
     <div id="medication-list"></div>
 
     <script>
-        const form = document.getElementById('medication-form');
-        const nameInput = document.getElementById('medication-name');
-        const dosageInput = document.getElementById('medication-dosage');
-        const frequencyInput = document.getElementById('medication-frequency');
-        const medicationList = document.getElementById('medication-list');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('medication-form');
+            const nameInput = document.getElementById('medication-name');
+            const dosageInput = document.getElementById('medication-dosage');
+            const frequencyInput = document.getElementById('medication-frequency');
+            const medicationList = document.getElementById('medication-list');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = nameInput.value;
-            const dosage = dosageInput.value;
-            const frequency = frequencyInput.value;
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = nameInput.value;
+                const dosage = dosageInput.value;
+                const frequency = frequencyInput.value;
 
-            const medicationDiv = document.createElement('div');
-            medicationDiv.className = 'medication';
-            medicationDiv.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
+                const medicationDiv = document.createElement('div');
+                medicationDiv.className = 'medication';
+                medicationDiv.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
 
-            medicationList.appendChild(medicationDiv);
-            form.reset();
+                medicationList.appendChild(medicationDiv);
+                form.reset();
+            });
         });
     </script>
 </body>
