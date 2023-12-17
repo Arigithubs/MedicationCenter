@@ -21,17 +21,24 @@
     <div id="medication-list"></div>
 
     <script>
-        document.getElementById('medication-form').addEventListener('submit', function(e) {
+        const form = document.getElementById('medication-form');
+        const nameInput = document.getElementById('medication-name');
+        const dosageInput = document.getElementById('medication-dosage');
+        const frequencyInput = document.getElementById('medication-frequency');
+        const medicationList = document.getElementById('medication-list');
+
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            var name = document.getElementById('medication-name').value;
-            var dosage = document.getElementById('medication-dosage').value;
-            var frequency = document.getElementById('medication-frequency').value;
-            var medicationList = document.getElementById('medication-list');
-            var div = document.createElement('div');
-            div.className = 'medication';
-            div.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
-            medicationList.appendChild(div);
-            document.getElementById('medication-form').reset();
+            const name = nameInput.value;
+            const dosage = dosageInput.value;
+            const frequency = frequencyInput.value;
+
+            const medicationDiv = document.createElement('div');
+            medicationDiv.className = 'medication';
+            medicationDiv.textContent = `Name: ${name}, Dosage: ${dosage}, Frequency: ${frequency}`;
+
+            medicationList.appendChild(medicationDiv);
+            form.reset();
         });
     </script>
 </body>
