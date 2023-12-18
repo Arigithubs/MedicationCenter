@@ -105,11 +105,21 @@
                     <label class="text-gray-600">Dosage: <span class="font-bold">${dosage}</span></label>
                     <label class="text-gray-600">Frequency: <span class="font-bold">${frequency}</span></label>
                     <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-2">Delete</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2">Edit</button>
                 `;
                 
-                const deleteButton = medicationDiv.querySelector('button');
+                const deleteButton = medicationDiv.querySelector('.bg-red-500');
                 deleteButton.addEventListener('click', function() {
                     medicationDiv.remove();
+                });
+
+                const editButton = medicationDiv.querySelector('.bg-blue-500');
+                editButton.addEventListener('click', function() {
+                    const newName = prompt('Enter new medication name:');
+                    if (newName) {
+                        const medicationName = medicationDiv.querySelector('h3');
+                        medicationName.textContent = newName;
+                    }
                 });
 
                 medicationList.appendChild(medicationDiv);
@@ -143,49 +153,6 @@
 
             function showSuccessMessage(message) {
                 successMessage.textContent = message;
-            }
-        });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-    <!-- CSS styles remain the same -->
-</head>
-<body>
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-4">Medication Manager</h1>
-        <form id="medication-form" class="mb-4">
-            <!-- Form inputs remain the same -->
-        </form>
-        <div id="medication-list"></div>
-        <div id="success-message" class="success-message"></div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Existing code remains the same
-
-            // Check if user account exists in local storage
-            const userAccount = localStorage.getItem('userAccount');
-            if (userAccount) {
-                // User account exists, perform necessary actions
-                console.log('User account found:', userAccount);
-            } else {
-                // User account does not exist, prompt for account creation
-                const username = prompt('Please enter your username:');
-                const password = prompt('Please enter your password:');
-
-                // Create user account object
-                const account = {
-                    username: username,
-                    password: password
-                };
-
-                // Store user account in local storage
-                localStorage.setItem('userAccount', JSON.stringify(account));
-
-                console.log('User account created:', account);
             }
         });
     </script>
