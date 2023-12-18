@@ -193,9 +193,13 @@
                 const formattedNextReminderDate = nextReminderDate.toLocaleDateString();
                 const formattedNextReminderTime = nextReminderDate.toLocaleTimeString();
 
-                console.log(`Hi ${fullName} (${username})! Don't forget to take ${dosage} of ${name} ${frequency} times a day.`);
-                console.log(`Next reminder: ${formattedNextReminderDate} at ${formattedNextReminderTime}`);
-                console.log(`Email: ${email}`);
+                const reminderMessage = `Hi ${fullName} (${username})! Don't forget to take ${dosage} of ${name} ${frequency} times a day.`;
+                const nextReminder = `Next reminder: ${formattedNextReminderDate} at ${formattedNextReminderTime}`;
+                const emailMessage = `Email: ${email}`;
+
+                console.log(reminderMessage);
+                console.log(nextReminder);
+                console.log(emailMessage);
             }
 
             function showError(elementId, errorMessage) {
