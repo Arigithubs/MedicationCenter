@@ -45,22 +45,56 @@
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
+
+        /* Additional styling */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .form-button {
+            background-color: #4f46e5;
+            color: #fff;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .form-button:hover {
+            background-color: #4338ca;
+        }
     </style>
 </head>
 <body>
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-4">Medication Manager</h1>
         <form id="medication-form" class="mb-4">
-            <input type="text" id="username" placeholder="Username" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
-            <input type="text" id="full-name" placeholder="Full Name" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
-            <input type="email" id="email" placeholder="Email" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
-            <input type="text" id="medication-name" placeholder="Medication Name" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+            <input type="text" id="username" placeholder="Username" required class="form-input">
+            <input type="text" id="full-name" placeholder="Full Name" required class="form-input">
+            <input type="email" id="email" placeholder="Email" required class="form-input">
+            <input type="text" id="medication-name" placeholder="Medication Name" required class="form-input">
             <div id="medication-name-error" class="error-message"></div>
-            <input type="number" id="medication-dosage" placeholder="Dosage" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+            <input type="number" id="medication-dosage" placeholder="Dosage" required class="form-input">
             <div id="medication-dosage-error" class="error-message"></div>
-            <input type="text" id="medication-frequency" placeholder="Frequency" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+            <input type="text" id="medication-frequency" placeholder="Frequency" required class="form-input">
             <div id="medication-frequency-error" class="error-message"></div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add Medication</button>
+            <button type="submit" class="form-button">Add Medication</button>
         </form>
         <div id="medication-list"></div>
         <div id="success-message" class="success-message"></div>
