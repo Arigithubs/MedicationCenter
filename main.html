@@ -39,6 +39,12 @@
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
+
+        .success-message {
+            color: #38a169;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +60,7 @@
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add Medication</button>
         </form>
         <div id="medication-list"></div>
+        <div id="success-message" class="success-message"></div>
     </div>
 
     <script>
@@ -63,6 +70,7 @@
             const dosageInput = document.getElementById('medication-dosage');
             const frequencyInput = document.getElementById('medication-frequency');
             const medicationList = document.getElementById('medication-list');
+            const successMessage = document.getElementById('success-message');
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -107,6 +115,7 @@
                 medicationList.appendChild(medicationDiv);
                 form.reset();
 
+                showSuccessMessage('Medication added successfully!');
                 reminder(name, dosage, frequency);
             });
 
@@ -130,6 +139,10 @@
                 errorElements.forEach(function(element) {
                     element.textContent = '';
                 });
+            }
+
+            function showSuccessMessage(message) {
+                successMessage.textContent = message;
             }
         });
     </script>
