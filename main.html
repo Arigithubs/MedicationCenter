@@ -52,6 +52,8 @@
         <h1 class="text-3xl font-bold mb-4">Medication Manager</h1>
         <form id="medication-form" class="mb-4">
             <input type="text" id="username" placeholder="Username" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+            <input type="text" id="full-name" placeholder="Full Name" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+            <input type="email" id="email" placeholder="Email" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
             <input type="text" id="medication-name" placeholder="Medication Name" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
             <div id="medication-name-error" class="error-message"></div>
             <input type="number" id="medication-dosage" placeholder="Dosage" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
@@ -68,6 +70,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('medication-form');
             const usernameInput = document.getElementById('username');
+            const fullNameInput = document.getElementById('full-name');
+            const emailInput = document.getElementById('email');
             const nameInput = document.getElementById('medication-name');
             const dosageInput = document.getElementById('medication-dosage');
             const frequencyInput = document.getElementById('medication-frequency');
@@ -77,6 +81,8 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const username = usernameInput.value;
+                const fullName = fullNameInput.value;
+                const email = emailInput.value;
                 const name = nameInput.value;
                 const dosage = dosageInput.value;
                 const frequency = frequencyInput.value;
@@ -87,6 +93,16 @@
                 // Validate form inputs
                 if (!username) {
                     showError('username-error', 'Please enter a username.');
+                    return;
+                }
+
+                if (!fullName) {
+                    showError('full-name-error', 'Please enter your full name.');
+                    return;
+                }
+
+                if (!email) {
+                    showError('email-error', 'Please enter your email.');
                     return;
                 }
 
@@ -134,17 +150,18 @@
                 form.reset();
 
                 showSuccessMessage('Medication added successfully!');
-                reminder(username, name, dosage, frequency);
+                reminder(username, fullName, email, name, dosage, frequency);
             });
 
-            function reminder(username, name, dosage, frequency) {
+            function reminder(username, fullName, email, name, dosage, frequency) {
                 const currentDate = new Date();
                 const nextReminderDate = new Date(currentDate.getTime() + (frequency * 24 * 60 * 60 * 1000));
                 const formattedNextReminderDate = nextReminderDate.toLocaleDateString();
                 const formattedNextReminderTime = nextReminderDate.toLocaleTimeString();
 
-                console.log(`Hi ${username}! Don't forget to take ${dosage} of ${name} ${frequency} times a day.`);
+                console.log(`Hi ${fullName} (${username})! Don't forget to take ${dosage} of ${name} ${frequency} times a day.`);
                 console.log(`Next reminder: ${formattedNextReminderDate} at ${formattedNextReminderTime}`);
+                console.log(`Email: ${email}`);
             }
 
             function showError(elementId, errorMessage) {
